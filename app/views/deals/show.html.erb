@@ -1,0 +1,84 @@
+<div class = "container data">        
+  <div class="row deal-panel">
+
+    <h1 class="show"><%= link_to @deal.title,deal_path(@deal)%></h1>
+    <div class="col-md-4 col-sm-12 col-xs-12 deal-img">
+      <%= image_tag @deal.image.url(:large), class: "img-responsive" %><br />
+      <p class="deal-time"><%= time_ago_in_words(@deal.created_at) %> ago </p>
+      <%= link_to "Back" ,root_path %> <br /> 
+      <% if user_signed_in? %>
+        <% if @deal.user_id == current_user.id %>
+          <%= link_to "Edit" ,edit_deal_path(@deal), class: "btn btn-xs btn-warning glyphicon glyphicon-pencil" %> |
+          <%= link_to "Delete", deal_path(@deal),method: :delete,data: {confirm: "Thinks onces again"}, class: "btn btn-xs btn-warning"  %>
+        <% end %>
+      <% end %>  
+    </div>
+
+    <div class="col-md-8 col-sm-12 col-xs-12 deal-info text-justify">
+      <p><%= @deal.description%><br /></p>
+      <div class="average-survey-rating" data-score=<%=  @average_surveys %>></div> 
+        <span>Based on <%= @deal.surveys.count%> survey</span>
+        <h3>buy: <a href="<%= @deal.link1 %>" target=_blank><%= @deal.link %></a></h3>
+
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+          Rate this deal
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for([@deal, @deal.surveys.build]) do |f| %>
+                  <div id="rating-form">
+                    <label>Rating</label>
+                  </div>
+                  <%= f.input :comment %>
+                  <%= f.button :submit, "Rate it!" %>
+                <% end %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>    
+      </div> 
+    </div> 
+      
+</div>
+<div class="survey">
+  <%= render @deal.surveys %><br />
+</div>
+
+<script>
+  $('#rating-form').raty({
+    path: '/assets/',
+    scoreName: 'survey[rating]'
+  });
+</script>
+
+<script>
+  $('.survey-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+<script>
+  $('.average-survey-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
+

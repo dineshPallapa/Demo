@@ -1,0 +1,12 @@
+<div class="container survey">
+<h3 style="color: green">Your rating:  </h3>
+<div class = "survey-rating" data-score="<%= survey.rating %>"></div>
+
+<p class="user-comment"><%= survey.comment %></p>
+<% if user_signed_in? %>
+  <% if survey.user_id == current_user.id %>
+    <%= link_to "edit", edit_deal_survey_path(survey.deal, survey), class: "btn btn-xs btn-info glyphicon glyphicon-pencil" %>
+    <%= link_to "delete", deal_survey_path(survey.deal, survey),method: :delete,data: {confirm: "Stay connected"}, class: "btn btn-xs btn-info" %>
+  <% end %>
+<% end %>
+</div>

@@ -1,0 +1,47 @@
+<nav class="navbar navbar-default"> 
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Home" , root_path%></li>
+        <li class="navbar-form navbar-left" role="search">
+        <%= form_tag searchable_path, method: 'get' do  %>
+          <%= text_field_tag :search, params[:search] ,:class => "form-control", :placeholder => "Search" %>  
+          <%= submit_tag "Search", name: nil, :class => "btn btn-default" %>
+        <% end %>
+        </li>
+      </ul> 
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? && current_user.admin? %>
+          <li><%= link_to "Add a big deal", new_deal_path%></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <% elsif user_signed_in? %>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign In", new_user_session_path %></li>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header><img src="assets/LOGO.png" width="100%", height="100px" ></header> 
+
+<div  class="cat-nav container-fuild">
+  <ul class="cat" style="border:1PX solid grey ">
+    <% Category.all.each do |category| %>
+      <li class="cat-link">
+        <%= link_to category.name, deals_path(category: category.name)%>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
