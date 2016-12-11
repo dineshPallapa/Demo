@@ -1,0 +1,22 @@
+// Place all the styles related to the surveys controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@mixin background-tile {
+   box-sizing: border-box;
+   background-color: #fff;
+   border-radius: 5px;
+   box-shadow: 3px 3px 5px 6px #ccc;
+   
+  }
+
+.survey { 
+  background-color: #211818;
+  border: 2px solid white; 
+  padding: 1.5em 1.25em;
+  margin:10px;
+  .user-comment{
+    font-size: 20px;
+    color: white;
+  }
+}
+
