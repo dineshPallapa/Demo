@@ -1,0 +1,73 @@
+// Place all the styles related to the Deals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.deal-panel {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e6d3d3;
+  background-color: #ffffff;
+  padding: 10px;
+  margin: 10px;
+  .deal-img{
+    position: relative; 
+    .deal-time {
+        position: absolute; 
+        top: 0px; 
+        left: 15px;
+        font-family: 'Lora', serif;
+        font-size: 20px; 
+        font-weight:300;
+        background-color: grey;
+        color:black;
+        opacity: 0.9;
+    }
+  }
+  .deal-info{
+    p{
+    color:black;
+    min-width: 240px;
+    line-height: 1.6em;
+    font-size: 1.6rem;
+    font-weight:300;
+    font-family:Old Standard TT;
+  }
+  }
+}
+
+
+.cat-nav {
+  background-color: white;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  .cat{
+    .cat-link {
+      padding: 5px;
+      text-decoration:none;
+      display: inline-block;
+      text-transform: uppercase;
+      a {
+      font-size: 16px;
+      color: black !important;
+      text-decoration: none;
+    }
+    }
+  }
+}
+   .cat-link:hover {
+     background-color: blue;
+     text-decoration: none;
+   }
+@media screen and (min-width: 992px)  {
+  .deal-info{
+    max-width: calc(100% - 240px);
+  }
+}
+@media screen and (min-width: 768px) {
+  .deal-img{
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.show{
+  font-family: Overpass;
+}
