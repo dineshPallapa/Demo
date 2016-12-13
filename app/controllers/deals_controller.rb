@@ -59,7 +59,7 @@ class DealsController < ApplicationController
       redirect_to root_path
     else
       searchword = params[:search]
-      @data = Deal.where("title LIKE ? or description LIKE ?", "%#{searchword}%","%#{searchword}%")
+      @deals = Deal.where("lower(title) LIKE ? or lower(description) LIKE ?", "%#{searchword.downcase}%","%#{searchword.downcase}%")
     end
   end
 
