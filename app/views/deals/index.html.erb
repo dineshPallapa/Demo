@@ -1,1 +1,28 @@
-<h1>deals</h1>
+<div class = "container">
+
+   <h3><%= params[:category] %></h3>
+ 
+   <% if @deals.count == 0 %>
+     <h1>no deals avilable</h1>
+   <% else %>
+     <% @deals.all.each do |deal| %>
+       <div class="row deal-panel">
+         <h1 class="show"><%= link_to deal.title,deal_path(deal)%></h1>
+         <div class="col-md-4 col-sm-12 col-xs-12 deal-img">
+           <%= image_tag deal.image.url(:large), class: "img-responsive" %><br />
+           <p class="deal-time"><%= time_ago_in_words(deal.created_at) %> ago </p> 
+         </div>
+         <div class="col-md-8 col-sm-12 col-xs-12 deal-info text-justify">
+           
+           <%= (deal.description).truncate_words(70)%>
+           <h4><%= link_to "Read more",deal_path(deal)%>...</h4>
+           
+           <h4>More Deals:</h4>
+           <p><%= link_to deal.link , url_with_protocol(deal.link1), :target => '_blank' %></p>
+                 
+         </div>
+       </div>       
+     <% end %>
+   <% end %>
+ </div>
+ <%= will_paginate @deals, renderer: BootstrapPagination::Rails %>
