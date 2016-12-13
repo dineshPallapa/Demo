@@ -1,10 +1,27 @@
 <h1>searching for '<%= params[:search] %>'</h1>
 
-<% if @data.empty? %>
-  <h1>no results found</h1>
-<% end %>
+  <% if @deals.size.zero? %>
+    <h1>no results found</h1>
 
-<% @data.each do |s| %>
-  <%= s.title %><br>
-  <%= s.description %>
-<% end %>
+  <% else %>
+    <p><%= pluralize(@deals.size,'Deal') %> found</p>
+    <div class = "container">
+
+    <% @deals.all.each do |deal| %>
+      <div class="row deal-panel">
+        <h1 class="show"><%= link_to deal.title,deal_path(deal)%></h1>
+        <div class="col-md-4 col-sm-12 col-xs-12 deal-img">
+          <%= image_tag deal.image.url(:large), class: "img-responsive" %><br />
+          <p class="deal-time"><%= time_ago_in_words(deal.created_at) %> ago </p>
+        </div>
+        <div class="col-md-8 col-sm-12 col-xs-12 deal-info text-justify">
+          <%= (deal.description).truncate_words(70)%>
+          <h4><%= link_to "Read more",deal_path(deal)%>...</h4>
+
+          <h4>More Deals:</h4>
+          <p><%= link_to deal.link , url_with_protocol(deal.link1), :target => '_blank' %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
