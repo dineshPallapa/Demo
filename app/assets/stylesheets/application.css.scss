@@ -27,6 +27,7 @@
   }
 
   body {
+    background-image: url(Tile.png);
     background-color: #dfdfdf;
     font-family: 'Lora', serif;
   }
@@ -48,15 +49,15 @@
    border-radius: 0px;
   }
   .navbar-default {
-   background-color: #313131;
+   background-color: #162646;
    padding-bottom: 5px;
    padding-top: 5px;
 
    .navbar-nav > li > a {
-     color: #fff;
+     color: #19b5d2;
      font-size: 18px;
      &:hover {
-       color: darken(#19b5d2, 5%);
+       color: darken(#fff, 5%);
        transition: 0.5s;
      }
    }
@@ -105,5 +106,7 @@
 
  }
 
-
+.data {
+  padding: 20px;
+}
 
