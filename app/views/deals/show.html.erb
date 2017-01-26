@@ -56,7 +56,9 @@
       
 </div>
 <div class="survey">
-  <%= render @deal.surveys %><br />
+  <% if @deal.surveys.count > 0 %>
+    <%= render @deal.surveys %><br />
+  <% end %>
 </div>
 
 <script>

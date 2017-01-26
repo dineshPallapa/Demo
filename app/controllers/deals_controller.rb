@@ -32,7 +32,7 @@ class DealsController < ApplicationController
     if @deal.surveys.blank?
       @average_surveys = 0
     else
-      @average_surveys = @deal.surveys.average(:rating).round(2)
+      @average_surveys = @deal.surveys.average(:rating)
     end
   end 
 
