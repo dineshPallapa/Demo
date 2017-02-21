@@ -12,7 +12,7 @@
         <h1 class="show"><%= link_to deal.title,deal_path(deal)%></h1>
         <div class="col-md-4 col-sm-12 col-xs-12 deal-img">
           <%= image_tag deal.image.url(:large), class: "img-responsive" %><br />
-          <p class="deal-time"><%= time_ago_in_words(deal.created_at) %> ago </p>
+          <p class="deal-time"><%= time_ago_in_words(deal.created_at) %> ago. </p>
         </div>
         <div class="col-md-8 col-sm-12 col-xs-12 deal-info text-justify">
           <%= (deal.description).truncate_words(70)%>
