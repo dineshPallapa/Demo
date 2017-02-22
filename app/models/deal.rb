@@ -9,4 +9,12 @@ class Deal < ApplicationRecord
                             :path => ":rails_root/public/system/:attachment/:id/:style_:filename"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
+  def trim
+    title.downcase.gsub(" ", "-")  
+  end
+
+  def to_param
+    "#{id}-#{trim}"
+  end
+
 end
