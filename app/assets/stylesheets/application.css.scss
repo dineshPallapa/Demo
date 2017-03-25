@@ -24,6 +24,7 @@
    border-radius: 5px;
    box-shadow: 3px 3px 5px 6px #ccc;
    padding: 1.5em 1.25em;
+   margin: 0px 0px 10px 0px;
   }
 
   body {
@@ -48,12 +49,13 @@
    margin-bottom: 0px;
    border-radius: 0px;
   }
-  .navbar-default {
-   background-color: #162646;
-   padding-bottom: 5px;
-   padding-top: 5px;
 
-   .navbar-nav > li > a {
+  .navbar-default {
+    background-color: #162646;
+    padding-bottom: 5px;
+    padding-top: 5px;
+
+    .navbar-nav > li > a {
      color: #19b5d2;
      font-size: 18px;
      &:hover {
@@ -62,51 +64,54 @@
      }
    }
 
-   .navbar-header {
-
-     .navbar-brand {
+    .navbar-header {
+      .navbar-brand {
        color: #222;
        letter-spacing: 1.4px;
-     }
+      }
+    }
 
-   }
 
-
-   .navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
-     background-color: darken(#f1c40f, 10%);
-     color: #fff;  
-   }
+    .navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
+      background-color: darken(#f1c40f, 10%);
+      color: #fff;  
+    }
 
   }
 
 
 
- @media only screen and (max-width: 768px) {
-     header {
-         font-size: 40px;
-     }
-   }
+  @media only screen and (max-width: 768px) {
+    header {
+      font-size: 40px;
+    }
+  }
 
+  @media (max-width: 768px) {
+    .navbar-form .form-control {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle;
+    }
+  }
  
- .signup-form {
-   @include background-tile;
+  .signup-form {
+    @include background-tile;
 
-   h2 {
-     margin-top: 0;
-   }
+    h2 {
+      margin-top: 0;
+    }
 
- }
+  }  
 
- .login-form {
-   @include background-tile;
+  .login-form {
+    @include background-tile;
+    h2 {
+      margin-top: 0;
+    }
+  }
 
-   h2 {
-     margin-top: 0;
-   }
-
- }
-
-.data {
-  padding: 20px;
-}
+  .data {
+    padding: 20px;
+  }
 
