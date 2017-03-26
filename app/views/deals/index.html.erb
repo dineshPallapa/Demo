@@ -1,3 +1,4 @@
+<%= render 'shared/carousel' %>
 <div class="container-fluid">
 
   <div class = "container-fluid col-md-9 data">
@@ -32,3 +33,7 @@
   </div>
   <%= will_paginate @deals, renderer: BootstrapPagination::Rails %>
 </div>
+
+<% @deals.all.each do |deal| %>
+  <%= link_to image_tag(deal.image.url(:large)), deal.image.url(:large), {  'data-toggle' => 'lightbox', "data-gallery"=>"example-gallery"} %>
+<% end %>
