@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins
-  devise_for :users, skip: [:sessions,:passwords]
+  devise_for :users, skip: [:sessions,:passwords] , controllers: { confirmations: 'confirmations' }
     as :user do
       get 'login', to: 'devise/sessions#new', as: :new_user_session
       post 'login', to: 'devise/sessions#create', as: :user_session

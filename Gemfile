@@ -20,6 +20,8 @@ gem 'will_paginate-bootstrap'
 #storeing images to databases
 gem "paperclip", "~> 5.0.0"
 
+gem 'delayed_job_active_record'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
