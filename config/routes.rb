@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  post "/graphql", to: "graphql#execute"
+
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+  end
+
   devise_for :admins
   devise_for :users, skip: [:sessions,:passwords]
     as :user do
@@ -13,7 +19,7 @@ Rails.application.routes.draw do
       put 'resetpassword', to: 'devise/passwords#update'
     end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :deals do 
+  resources :deals do
     resources :surveys
   end
   root to: 'deals#index'
