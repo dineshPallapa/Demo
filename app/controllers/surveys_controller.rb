@@ -12,9 +12,10 @@ class SurveysController < ApplicationController
     @survey = Survey.new(survey_params)
     @survey.deal_id = @deal.id
     @survey.user_id = current_user.id
+    @survey.ip_address = request.remote_ip
     if @survey.save
       redirect_to deal_path(@deal)
-    else 
+    else
       render :new
     end
   end
@@ -25,9 +26,10 @@ class SurveysController < ApplicationController
 
   end
   def update
+    @survey.ip_address = request.remote_ip
     if @survey.update(survey_params)
       redirect_to deal_path(@deal)
-    else 
+    else
       render :edit
     end
 
@@ -39,7 +41,7 @@ class SurveysController < ApplicationController
 
   private
     def survey_params
-      params.require(:survey).permit(:rating,:comment)
+      params.require(:survey).permit(:rating,:comment, :ip_address)
     end
 
     def find_deal
