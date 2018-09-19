@@ -16,12 +16,13 @@
             <label>Rating</label>
           </div>
           <%= f.input :comment %>
+          <%= f.input :avatar, as: :file %>
           <%= f.button :submit %>
         <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        
+
       </div>
     </div>
   </div>

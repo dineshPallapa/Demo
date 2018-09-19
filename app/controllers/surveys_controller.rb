@@ -41,7 +41,7 @@ class SurveysController < ApplicationController
 
   private
     def survey_params
-      params.require(:survey).permit(:rating,:comment, :ip_address)
+      params.require(:survey).permit(:rating,:comment, :ip_address, :avatar)
     end
 
     def find_deal

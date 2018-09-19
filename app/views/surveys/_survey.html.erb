@@ -3,6 +3,13 @@
 <div class = "survey-rating" data-score="<%= survey.rating %>"></div>
 
 <p class="user-comment"><%= survey.comment %></p>
+
+<div>
+  <% if survey.avatar.url.present? %>
+    <%= image_tag(survey.avatar.thumb.url) %>
+  <% end %>
+</div>
+
 <% if user_signed_in? %>
   <% if survey.user_id == current_user.id %>
     <%= link_to "edit", edit_deal_survey_path(survey.deal, survey), class: "btn btn-xs btn-info glyphicon glyphicon-pencil" %>

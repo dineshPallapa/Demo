@@ -13,12 +13,14 @@ gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'simple_form'
 gem 'will_paginate-bootstrap'
 
 #storeing images to databases
-gem "paperclip", "~> 5.0.0"
+gem 'paperclip', '~> 5.0.0'
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -58,7 +60,7 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
-  gem "letter_opener", :group => :development
+  gem 'letter_opener', :group => :development
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
